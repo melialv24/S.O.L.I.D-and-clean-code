@@ -10,9 +10,20 @@
 
     // Simplificar esta función
     // switch? Object literal? validar posibles colores
-    function getFruitsByColor( color: string ): string[] {
+    type FruitColor = 'red'| 'yellow'| 'purple'
+    function getFruitsByColor( color: FruitColor ): string[] {
 
-        switch (color) {
+        const fruitsByColor = {
+            red:    ['manzana', 'fresa'],
+            yellow: ['piña', 'banana'],
+            purple: ['moras', 'uvas']
+        }
+
+        if( !Object.keys( fruitsByColor ).includes(color)) {
+            throw Error('the color must be: red, yellow, purple')
+        } 
+        return fruitsByColor[color]
+        /*switch (color) {
             case 'red':
                 return ['manzana','fresa']
             case 'yellow':
@@ -21,7 +32,7 @@
                 return ['moras','uvas']
             default:
                 throw Error('the color must be: red, yellow, purple');
-        }
+        }*/
     }
 
     // Simplificar esta función
@@ -55,9 +66,17 @@
 
     function workingSteps() {
 
-        isFirstStepWorking ? firstStepWorking() : brokenStep(1)
+        if( !isFirstStepWorking ) return 'First step broken.'
 
+        if( !isSecondStepWorking ) return 'Second step broken.'
 
+        if( !isThirdStepWorking ) return 'Third step broken.'
+        
+        if( !isFourthStepWorking ) return 'Fourth step broken.'
+
+        return 'Working properly!'
+
+        /*
         if( isFirstStepWorking === true ) {
             if( isSecondStepWorking === true ) {
                 if( isThirdStepWorking === true ) {
@@ -78,7 +97,7 @@
         }
         else {
             return 'First step broken.';
-        }
+        }*/
     }
 
 
