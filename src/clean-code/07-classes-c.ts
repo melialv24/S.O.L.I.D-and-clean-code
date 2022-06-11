@@ -26,10 +26,7 @@
 
 
     interface UserProps {
-        birthdate : Date;
-        email     : string;
-        gender    : Gender;
-        name      : string;
+        email      : string;
         role      : string;
     }
     //no se llama al super por que no hay herencia, no se usa el extends
@@ -75,10 +72,33 @@
         }
     }
 
+    interface UserSettingsProps extends User {
+        workingDirectory:       string
+        lastOpenFolder:         string
+        email:                  string
+        role:                   string
+        name:                   string
+        gender:                 Gender
+        birthdate:               Date
+    }
+
+    // Aquí vamos a priorizar la composición de una clase en lugar de hacer herencia
     class UserSettings {
         public person: Person;
         public user: User;
-        public settings: Settings;
+        public settings: SettingsProps;
+
+        // Inicializamos los valores iniciales del nuevo objeto
+        constructor({
+            name, gender, birthdate, 
+            email, role,
+            workingDirectory, lastOpenFolder
+
+        }: UserSettingsProps){
+            this.person = new Person({ name, gender, birthdate})
+            this.user = new User({ email, role })
+            this.settings = new SettingsProps({ workingDirectory, lastOpenFolder})
+        }
 
     }
 
