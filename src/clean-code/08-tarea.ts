@@ -42,7 +42,7 @@
         }: InputInterface){
             this.HtmlElement = new HtmlElement(id, 'input')
             this.InputAttributes = new InputAttributes( value, placeholder)
-            this.InputEvents = new InputEvents()
+            this.InputEvents = new InputEvents
         }
     }
     //? Idea para la nueva clase InputElement
