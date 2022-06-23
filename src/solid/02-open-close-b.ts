@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { HttpClient } from './03-open-close-c';
 
 
